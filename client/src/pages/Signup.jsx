@@ -35,7 +35,7 @@ function Signup() {
               <Label value="Your password" />
               <TextInput type="text" placeholder="Password" id="password" />
             </div>
-            <Button gradientDuoTone="purpleToPink" type="submit">
+            <Button outline gradientDuoTone="purpleToBlue" type="submit">
               Sign Up
             </Button>
           </form>
