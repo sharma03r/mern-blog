@@ -19,7 +19,7 @@ function Dashboard() {
       <div className="md:w-56">
         <DashSideBar />
       </div>
-      <div>{tab === "profile" && <DashProfile />}</div>
+      {tab === "profile" && <DashProfile />}
     </div>
   );
 }
