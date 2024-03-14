@@ -1,11 +1,12 @@
 import { Sidebar } from "flowbite-react";
 import { HiUser, HiArrowSmRight } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function DashSideBar() {
   const location = useLocation();
   const [tab, setTab] = useState("");
+
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get("tab");
@@ -23,6 +24,7 @@ function DashSideBar() {
               icon={HiUser}
               label={"User"}
               labelColor={"dark"}
+              as="div"
             >
               Profile
             </Sidebar.Item>
