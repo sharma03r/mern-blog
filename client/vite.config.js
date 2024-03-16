@@ -10,6 +10,9 @@ export default defineConfig({
         secure: false,
       },
     },
+    headers: {
+      "Cross-Origin-Embedder-Policy": "unsafe-none",
+    },
   },
   plugins: [react()],
 });
