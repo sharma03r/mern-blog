@@ -17,7 +17,30 @@ function CreatePost() {
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
+  const [publishError, setPublishError] = useState(null);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`/api/post/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPublishError(data.message);
+        return;
+      } else {
+        console.log("Blog pubklished");
+        setFormData({});
+      }
+    } catch (error) {
+      setPublishError("Something went wrong.");
+    }
+  };
   const handleUploadImage = async (e) => {
     try {
       if (!file) {
@@ -61,7 +84,7 @@ function CreatePost() {
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
       <h1 className="text-center text-3xl my-7 font-semibold">Create a Post</h1>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4 sm:flex-row justify-between">
           <TextInput
             type="text"
@@ -69,9 +92,18 @@ function CreatePost() {
             required
             id="title"
             className="flex-1"
+            onChange={(e) => {
+              setFormData({ ...formData, title: e.target.value });
+            }}
           />
-          <Select>
-            <option value="uncategorized">Select a category</option>
+          <Select
+            onChange={(e) => {
+              setFormData({ ...formData, category: e.target.value });
+            }}
+          >
+            <option value="uncategorized" disabled>
+              Select a category
+            </option>
             <option value="javascript">Javascript</option>
             <option value="react">React</option>
           </Select>
@@ -119,11 +151,19 @@ function CreatePost() {
           placeholder="Write something..."
           className="h-72 mb-12"
           required
+          onChange={(value) => {
+            setFormData({ ...formData, content: value });
+          }}
         />
         <Button type="submit" gradientDuoTone={"purpleToPink"} outline>
           Publish
         </Button>
       </form>
+      {publishError && (
+        <Alert color={"failure"} className="mt-5">
+          {publishError}
+        </Alert>
+      )}
     </div>
   );
 }
