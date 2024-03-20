@@ -34,7 +34,6 @@ function CreatePost() {
         setPublishError(data.message);
         return;
       } else {
-        console.log("Blog pubklished");
         setFormData({});
       }
     } catch (error) {
@@ -101,9 +100,7 @@ function CreatePost() {
               setFormData({ ...formData, category: e.target.value });
             }}
           >
-            <option value="uncategorized" disabled>
-              Select a category
-            </option>
+            <option value="uncategorized">Select a category</option>
             <option value="javascript">Javascript</option>
             <option value="react">React</option>
           </Select>
