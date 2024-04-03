@@ -67,11 +67,15 @@ function CommentSection({ postId }) {
       console.log(error);
     }
   };
+  const handleEdit = async (comment, editedComment) => {
+    comments.map((c) => {
+      c._id === comment._id ? { ...c, content: editedComment } : c;
+    });
+  };
   useEffect(() => {
     const getComments = async () => {
       try {
         const res = await fetch(`/api/comment/getpostcomments/${postId}`);
-        console.log(res);
         if (res.ok) {
           const data = await res.json();
           setComments(data);
@@ -145,7 +149,12 @@ function CommentSection({ postId }) {
             </div>
           </div>
           {comments.map((comment) => (
-            <Comment key={comment._id} comment={comment} onLike={handleLike} />
+            <Comment
+              key={comment._id}
+              comment={comment}
+              onLike={handleLike}
+              onEdit={handleEdit}
+            />
           ))}
         </>
       )}
