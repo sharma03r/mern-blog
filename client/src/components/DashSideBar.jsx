@@ -10,6 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutSuccess } from "../redux/user/userSlice";
+import { FaComment } from "react-icons/fa";
 
 function DashSideBar() {
   const location = useLocation();
@@ -71,6 +72,17 @@ function DashSideBar() {
                 as={"div"}
               >
                 Users
+              </Sidebar.Item>
+            </Link>
+          )}
+          {currentUser.isAdmin && (
+            <Link to={"/dashboard?tab=comments"}>
+              <Sidebar.Item
+                active={tab === "comments"}
+                icon={FaComment}
+                as={"div"}
+              >
+                Comments
               </Sidebar.Item>
             </Link>
           )}
