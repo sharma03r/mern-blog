@@ -36,9 +36,20 @@ This project is a full-stack web application built with modern technologies to p
 npm install
 ```
 
-###Technologies Used:
+### Technologies Used:
 
  - **Frontend:** React.js, Tailwind CSS, React Router DOM
  - **Backend:** Node.js (express), JSON Web Tokens, Google OAuth (optional)
  - **State Management:** Redux Toolkit
  - **Database:** MongoDB
+
+### Images:
+- ![image](https://github.com/sharma03r/mern-blog/assets/44360511/15f400d4-88c1-4cfe-805d-6ac805fe97cb)
+- ![image](https://github.com/sharma03r/mern-blog/assets/44360511/ed27e9ea-8226-41db-9895-799f6dc06a85)
+- ![image](https://github.com/sharma03r/mern-blog/assets/44360511/cd15b80e-8516-424c-a1a0-8b7fd3804db3)
+- ![image](https://github.com/sharma03r/mern-blog/assets/44360511/cf148e3e-207a-4075-89a7-8fdba032cfe0)
+- ![image](https://github.com/sharma03r/mern-blog/assets/44360511/0c246504-feb9-47d6-9cad-2cef62409eb5)
+
+
+
+
